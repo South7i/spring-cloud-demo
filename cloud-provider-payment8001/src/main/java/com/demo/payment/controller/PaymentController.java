@@ -25,11 +25,11 @@ public class PaymentController {
     @Resource
     private PaymentService paymentService;
 
-    @Resource
-    private DiscoveryClient discoveryClient;
-
     @Value("${server.port}")
     private String port;
+
+    @Resource
+    private DiscoveryClient discoveryClient;
 
     @GetMapping("/discovery")
     public Object discovery() {
@@ -44,7 +44,6 @@ public class PaymentController {
                     + instance.getPort() + "\t"
                     + instance.getUri());
         }
-
         return discoveryClient;
     }
 
