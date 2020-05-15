@@ -32,5 +32,4 @@ public class OrderController {
         return restTemplate.postForObject(paymentUrl+"insert",payment, ResultModel.class );
     }
 
-
 }
