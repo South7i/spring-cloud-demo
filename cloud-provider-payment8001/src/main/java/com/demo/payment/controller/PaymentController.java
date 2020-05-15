@@ -5,9 +5,12 @@ import com.demo.common.model.ResultModel;
 import com.demo.payment.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author: Mr.裴
@@ -22,8 +25,28 @@ public class PaymentController {
     @Resource
     private PaymentService paymentService;
 
+    @Resource
+    private DiscoveryClient discoveryClient;
+
     @Value("${server.port}")
     private String port;
+
+    @GetMapping("/discovery")
+    public Object discovery() {
+        List<String> services = discoveryClient.getServices();
+        for (String element : services) {
+            System.out.println("****element:" + element);
+        }
+        List<ServiceInstance> instances = discoveryClient.getInstances("PAYMENT-PROVIDER-SERVICE");
+        for (ServiceInstance instance : instances) {
+            System.out.println(instance.getServiceId() + "\t"
+                    + instance.getHost() + "\t"
+                    + instance.getPort() + "\t"
+                    + instance.getUri());
+        }
+
+        return discoveryClient;
+    }
 
     /**
      * [新增]
@@ -35,7 +58,7 @@ public class PaymentController {
     public ResultModel insert(@RequestBody Payment payment) {
         int insert = paymentService.insert(payment);
         log.info("添加信息：{},添加结果：{}", payment.toString(), insert);
-        return insert > 0 ? ResultModel.success("添加成功,端口号："+port) : ResultModel.error("添加失败");
+        return insert > 0 ? ResultModel.success("添加成功,端口号：" + port) : ResultModel.error("添加失败");
     }
 
     /**
@@ -72,7 +95,7 @@ public class PaymentController {
      **/
     @GetMapping("/{id}")
     public ResultModel load(@PathVariable("id") Long id) {
-        return ResultModel.success("查询成功，端口号："+port, paymentService.load(id));
+        return ResultModel.success("查询成功，端口号：" + port, paymentService.load(id));
     }
 
 }
