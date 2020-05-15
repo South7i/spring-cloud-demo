@@ -11,7 +11,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- *  payment
+ *  com.demo.payment
  * @author PeiKangLe 2020-05-14
  */
 @Data

@@ -20,7 +20,10 @@ public class OrderController {
 
     @Resource
     private RestTemplate restTemplate;
-    private static final String paymentUrl = "http://localhost:8001/Payment/";
+
+//    private static final String paymentUrl = "http://localhost:8001/Payment/"; 写死调用不推荐
+    //用微服务服务名去调用服务
+    private static final String paymentUrl = "http://PAYMENT-PROVIDER-SERVICE/Payment/";
 
     @GetMapping("/{id}")
     public ResultModel getPayment(@PathVariable("id") Long id){
