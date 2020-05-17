@@ -12,6 +12,12 @@ spring:
           search-paths:
             - PklSouthSpringCloudConfigStudyTest
       label: master
+  rabbitmq:
+    host: 192.168.11.2
+    port: 5672
+    username: guest
+    password: guest
+
 eureka:
   user:
     name: admin
@@ -19,3 +25,10 @@ eureka:
   client:
     service-url:
       defaultZone: http://${eureka.user.name}:${eureka.user.password}@eureka7001.com:7001/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+#        消息总线 监控服务
+        include: 'bus-refresh'
