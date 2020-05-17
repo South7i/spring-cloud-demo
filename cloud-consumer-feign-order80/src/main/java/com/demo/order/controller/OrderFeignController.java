@@ -18,7 +18,7 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping("/Order")
 @Slf4j
-public class OrderController {
+public class OrderFeignController {
 
     @Resource
     private PaymentService paymentService;
@@ -26,6 +26,12 @@ public class OrderController {
     @GetMapping("/{id}")
     public ResultModel load(@PathVariable("id") Long id) {
         return paymentService.load(id);
+    }
+
+
+    @GetMapping("/strTimeOut")
+    public String getStrTimeOut(){
+        return paymentService.getStrTimeOut();
     }
 
 }

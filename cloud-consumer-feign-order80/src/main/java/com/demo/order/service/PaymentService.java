@@ -14,4 +14,7 @@ public interface PaymentService {
     @GetMapping("/Payment/{id}")
     ResultModel load(@PathVariable("id") Long id);
 
+    @GetMapping("/Payment/strTimeOut")
+    public String getStrTimeOut();
+
 }

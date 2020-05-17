@@ -9,4 +9,9 @@ eureka:
     register-with-eureka: false
     service-url:
       defaultZone: http://${eureka.user.name}:${eureka.user.password}@eureka7001.com:7001/eureka
+ribbon:
+  # 指的是建立链接所用时间 适用于网络正常情况下，两端连接所需时间
+  ReadTimeout:  5000
+  # 指的是链接后从服务端读取到可用资源的时间
+  ConnectTimeout: 5000
 
