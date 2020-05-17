@@ -1,0 +1,21 @@
+server:
+  port: 3344
+spring:
+  application:
+    name: cloud-config-center
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/South7i/PklSouthSpringCloudConfigStudyTest.git
+#          uri: git@github.com:South7i/PklSouthSpringCloudConfigStudyTest.git
+          search-paths:
+            - PklSouthSpringCloudConfigStudyTest
+      label: master
+eureka:
+  user:
+    name: admin
+    password: 123456
+  client:
+    service-url:
+      defaultZone: http://${eureka.user.name}:${eureka.user.password}@eureka7001.com:7001/eureka
