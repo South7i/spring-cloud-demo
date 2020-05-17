@@ -7,6 +7,7 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
@@ -15,7 +16,7 @@ import javax.annotation.Resource;
  * @create 2020/5/17
  * @Description:
  **/
-//@RestController
+@RestController
 @RequestMapping("/order")
 @Slf4j
 // 默认降级方法 未指定降级方法的， 使用默认降级方法
@@ -29,7 +30,6 @@ public class OrderConteoller {
     @HystrixCommand
     @GetMapping("/serialOk")
     public String gerSerialOk(){
-        int i = 10/0;
         return paymentService.gerSerialOk();
     }
 
