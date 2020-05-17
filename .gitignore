@@ -1,10 +1,24 @@
-/*.iml
-/.idea
-/cloud-consumer-order80/*.iml
+# Idea
+.idea
+*.iml
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# .gitignore for maven 
+target/
+*.releaseBackup
+
+target
 /cloud-api-commons/target
 /cloud-consumer-order80/target
 /cloud-eureka-server7001/target
 /cloud-eureka-server7002/target
 /cloud-provider-payment8001/target
-/cloud-eureka-server7001/*.iml
-*.iml
+/cloud-consumer-consul-order80/target
+/cloud-consumer-zookeeper-order80/target
+/cloud-consumer-zookeeper-order80/target
+/cloud-provider-payment8002/target
+/cloud-provider-zookeeper-payment8004/target
