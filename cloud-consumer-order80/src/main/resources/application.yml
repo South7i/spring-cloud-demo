@@ -24,7 +24,3 @@ eureka:
     instance-id: order80
     #Eureka 面板 ，鼠标指向服务 显示ip地址信息
     prefer-ip-address: true
-
-mybatis:
-  mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.demo.common.entity       #所有Entity别名类所在包
