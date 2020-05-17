@@ -31,4 +31,10 @@ public class PaymentController {
         return paymentService.getSerialTimeOut();
     }
 
+    @GetMapping("/serialError")
+    public String gerErrorT(){
+        int i= 10/0;
+        return "我是你永远得不到的人";
+    }
+
 }
